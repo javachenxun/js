@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apply，call</title>
+    <script style="text/script" src="/plugins/BaseUtils.js"></script>
+</head>
+<script>
+    var value = "global 变量";
+    function Obj() {
+        this.value = "对象！";
+    }
+    function Fun1() {
+        this.show = function (arg1,arg2) {
+            console.log(this.value+":"+arg1+""+arg2);
+        };
+    }
+    ///////////////////////////////////////////////////////////////////////////
+    //         出现call,apply的原因：继承，相当于把call前的方法继承给了context（当context为对象时特别明显）
+    //         执行的是call前的方法（或对象的方法）
+    //         参数使用context【通过this.参数名称使用】 的或者传入的【直接使用】
+    //         区别：call.(context,arg1，arg1,...) apply.(context,[arg1，arg1,...])
+    ///////////////////////////////////////////////////////////////////////////
+    /**
+     * 调用对象的方法，
+     * 调用方式 【new 对象】.方法名称.call（context,...）
+     * 注意方法的参数只能传入，不能使用【new 对象】中的对象的属性
+     */
+    Utils.line("调用对象的方法");
+    new Fun1().show.call(window,"chen11","xun11");  //global 变量
+    new Fun1().show.call(new Obj(),"chen2","xun2");//对象！
+
+    new Fun1().show.apply(window,["chen11","xun11"]);
+    new Fun1().show.apply(new Obj(),["chen2","xun2"]);
+
+    Utils.line("调用方法");
+    function fun2(arg1,arg2) {
+        console.log(this.value+":"+arg1+""+arg2);
+    }
+    fun2.call(window,"chen11","xun11");  //global 变量
+    fun2.call(new Obj(),"chen2","xun2");//对象！
+    fun2.apply(window,["chen11","xun11"]);
+    fun2.apply(new Obj(),["chen2","xun2"]);
+</script>
+<body>
+</body>
+</html>

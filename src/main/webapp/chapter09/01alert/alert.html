@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>重写alert函数</title>
+    <script type="text/javascript" src="/plugins/jquery-3.2.0.js"></script>
+    <script type="text/javascript" src="jquery.alert.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;font-size:12px;}
+        .ul{list-style:none;margin:0px;padding:0px;width:100%}
+        .title{background: #30f2e2;text-align:left;padding-left:20px;line-height:18px;border:1px solid #999;}
+        .content{background: #30f2e2;text-align:center;height:70px;line-height:70px;border-left:1px solid #999;border-right:1px solid #999;color:#F0F;}
+        .btn-wrap{background:#30f2e2;text-align:center;height:38px;line-height:28px; border:1px solid #999;}
+        .btn{width: 80px;line-height: 28px;margin: 5px 0px;background: #30f2e2;border: 1px solid #FFF;cursor: pointer;color: #333;}
+        .btn:hover{color:#666;}
+    </style>
+
+    <script>
+          $(document).ready(function(){
+              alert("111","自定义标题");
+          });
+    </script>
+</head>
+<body>
+<div style="width: 100px;height: 3000px;background: #9dff4b;">test</div>
+</body>
+</html>

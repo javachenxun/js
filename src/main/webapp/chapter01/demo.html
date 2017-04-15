@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方法如何才能执行，又何时被执行？</title>
+    <script style="text/script" src="/plugins/jquery-3.2.0.js"></script>
+    <script style="text/script" src="/plugins/BaseUtils.js"></script>
+    <script>
+
+        console.log($("#div1").length+"-没有就绪前的获取【顶部】-"+$("#div1").text());
+        function method() {
+            console.log("普通顶部执行");
+        }
+        method();
+        /**
+         * 方法如何才能执行，又何时被执行？
+         * 1.调用才执行（和java中类似）：只有在script标签中调用了定义的函数就会执行，区别：定义了只会加载进内存，不调用不执行。
+         *  console.log(".."); 也属于调用，所以会执行。
+         *  同样适用于$(document).ready(function(){ })里面，只定义不执行，调用才执行。
+         * 2.什么时候被执行？
+         *   普通执行【script标签中直接调用，就绪前执行】，在dom解析到此处时就会被执行，不管是顶部还是底部标签都属于就绪前的执行
+         *      普通顶部执行：不能操作body中的dom
+         *      普通底部执行：可以操作body中的dom
+         *   $(document).ready(function(){ })  【就绪执行】
+         *   window.onload=function(){ } 【完全加载执行】
+         */
+
+        Utils.line();
+        //可以调用一次，如果出现多次只会调用最后一个
+        window.onload=function(){
+            console.log($("#div1").length+"-1onload-"+$("#div1").text());
+        };
+        window.onload=function(){
+            console.log($("#div1").length+"-2onload-"+$("#div1").text());
+        };
+        //可以调用多次
+        $(document).ready(function(){
+            console.log($("#div1").length+"-ready-"+$("#div1").text());
+        });
+        $(document).ready(function(){
+            console.log($("#div1").length+"-ready-"+$("#div1").text());
+        });
+        //简写如下 ，可以调用多次
+        $(function(){
+            console.log($("#div1").length+"-简写-"+$("#div1").text());
+        });
+        $(function(){
+            console.log($("#div1").length+"-简写-"+$("#div1").text());
+            //不执行
+            function method() {
+                console.log(" define  简写 method invoke");
+            }
+            //执行
+            method();
+        });
+        /**
+         *  dom就绪前，就绪和就绪之后执行的方式？
+         *  1.$(function(){ });简写，$(document).ready(function(){ });在DOM完全就绪并可以使用时调用
+         *  （比window.onload更早）。在同一个页面里可以多次出现
+         *  2.window.onload=function(){ } ： 效果等同于上 可以出现一次
+         *  3.dom加载过程：dom从上向下加载。加载->就绪->完全加载完成（包括附件资源也下载完成）
+         *
+         *  注意：ready和onload的区别：使用$(document).ready(){ }一般来说都要优于试用onload事件处理程序，
+         *        但必须要明确一点的是，因为支持文件可能还没有加载完成，所以类似图像的高度和宽度这样的属性
+         *        此时不一定有效也就是可能还不是最终的高度。
+         */
+
+    </script>
+</head>
+<body>
+    <div id="div1">div1</div>
+</body>
+<script>
+    /**
+     * 底部的执行也在于就绪之前，但至少body和它之上文档已经准备就绪。
+     * 说明：由于执行结果在于ready ，所以它也属于就绪之前的执行
+     */
+    console.log($("#div1").length+"-没有就绪前的获取【底部】-"+$("#div1").text());
+</script>
+</html>

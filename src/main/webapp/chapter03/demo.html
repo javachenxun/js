@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类型</title>
+    <script style="text/script" src="/plugins/BaseUtils.js"></script>
+    <script style="text/script" src="js.js"></script>
+    <script>
+        
+        new ITypeof(function () {console.log("cat1 running ...");}).getRunType();
+        new ITypeof("cat1").getRunType();
+        new ITypeof(true).getRunType();
+        new ITypeof(1).getRunType();
+        new ITypeof().getRunType();
+        new ITypeof(null).getRunType();
+        new ITypeof(new Object()).getRunType();
+
+        Utils.line();
+        tInstanceof(new String("chenxun"));
+        var iTypeof = new ITypeof("cat1");
+        tInstanceof(iTypeof);
+
+    </script>
+</head>
+<body>
+    <div id="div1">div1</div>
+</body>
+</html>

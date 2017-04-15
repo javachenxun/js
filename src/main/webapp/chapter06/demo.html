@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+    <script style="text/script" src="/plugins/BaseUtils.js"></script>
+    <script style="text/script" src="js.js"></script>
+    <script>
+        var f = getInner1();
+        console.log(f());
+        Utils.line();
+        console.log(getInner2());
+    </script>
+</head>
+<body>
+    <div id="div1">div1</div>
+</body>
+</html>

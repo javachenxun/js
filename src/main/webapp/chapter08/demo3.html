@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery相关</title>
+    <script style="text/script" src="/plugins/jquery-3.2.0.js"></script>
+    <script style="text/script" src="/plugins/BaseUtils.js"></script>
+    <script style="text/script" src="js3.js"></script>
+</head>
+<body>
+    <div id="div1">div内容<span>span内容</span></div>
+</body>
+<script>
+
+    Utils.line("jQuery.extend 扩展jQuery的静态方法");
+    console.log("最大值:"+$.ext.max(1,2));
+    console.log("最小值:"+$.ext.min(1,2));
+
+    Utils.line("jQuery.fn.函数名称 扩展jQuery的类的方法");
+    var jquery = $("#div1");
+    console.log("getText:"+$.ext.getText(jquery));
+    console.log("getHtml:"+$.ext.getHtml(jquery));
+    //这个主要测试每个jQuery只独立保存自己一个Json对象地址的引用
+    console.log("getTextAndHtml:"+$.ext.getTextAndHtml(jquery));
+    console.log("getTextAndHtml:" + $.ext.getJsonObject(jquery)
+            .addJson("text",  $.ext.getText(jquery))
+            .addJson("html",  $.ext.getHtml(jquery))
+            .addJson("chen", "xun").toString(jquery));
+
+</script>
+</html>

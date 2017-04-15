@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+    <script style="text/script" src="/plugins/BaseUtils.js"></script>
+    <script style="text/script" src="js.js"></script>
+    <script>
+
+        Utils.line("工厂方法");
+        var p3 = person(26,"chenxun3");
+        p3.show();
+        console.log("toString"+p3.toString());
+        console.log(p3 instanceof  person);//false
+        console.log(person.prototype.constructor ===  person);//true
+
+        Utils.line("构造函数");
+        new Cat("黄","鱼").catShow();
+        new Cat("黑","老鼠").catShow();
+
+        Utils.line("dog");
+
+        var dog = dog.init("豆豆1","黄色1");
+        console.log(dog.color);
+        console.log(dog.name);
+        console.log(dog.show());
+        var dog2 = dog.init("豆豆2","黄色2");
+        console.log(dog2.color);
+        console.log(dog2.name);
+        console.log(dog2.show());
+
+        Utils.line("构造函数+原型方式");
+        new Person(26,"chenxun1").show();
+        var p2 = new Person(26,"chenxun2");
+        p2.show();
+        console.log("toString"+p2.toString());
+        p2.extMthod();
+        console.log(p2 instanceof  Person);//true
+        console.log(Person.prototype.constructor  ===  Person);//false
+    </script>
+</head>
+<body>
+    <div id="div1">div1</div>
+</body>
+</html>
