@@ -17,21 +17,20 @@
     4.区别：call.(context,arg1，arg1,...) apply.(context,[arg1，arg1,...])
 
 ##### 5.js中可以直接使用对象有三种：本地对象、内置对象和宿主对象。
-
  - 本地对象：
-  - arguments：隐式获取参数个数和参数
-  - Function ：类可以直接创建函数的语法
-  - Object ： ECMAScript 中的 Object 对象与 Java 中的 java.lang.object 相似，ECMAScript 中的所有对象都由这个对象继承而来，Object 对象中的所有属性和方法都会出现在其他对象中。
-  - Array 
-  - Boolean 
-  - Date 
-  - Number 
-  - String
-  - RegExp
- - 内置对象：ECMA-262 只定义了两个内置对象，不必明确实例化内置对象，它已被实例化了。相当于java中的工具类的静态方法。
-  - Global ：全局属性和函数，直接使用函数名称即可。如`decodeURI() ，encodeURI()`
-  - Math ：提供数学计算相关，使用Math.方法名称
- - 宿主对象：所有 BOM 和 DOM 对象都是宿主对象。
+    - arguments：隐式获取参数个数和参数
+    - Function ：类可以直接创建函数的语法
+    - Object ： ECMAScript 中的 Object 对象与 Java 中的 java.lang.object 相似，ECMAScript 中的所有对象都由这个对象继承而来，Object 对象中的所有属性和方法都会出现在其他对象中。
+    - Array 
+    - Boolean 
+    - Date 
+    - Number 
+    - String
+    - RegExp
+- 内置对象：ECMA-262 只定义了两个内置对象，不必明确实例化内置对象，它已被实例化了。相当于java中的工具类的静态方法。
+   - Global ：全局属性和函数，直接使用函数名称即可。如`decodeURI() ，encodeURI()`
+   - Math ：提供数学计算相关，使用Math.方法名称
+- 宿主对象：所有 BOM 和 DOM 对象都是宿主对象。
 
 ##### 6.闭包
 
@@ -40,16 +39,15 @@
 ##### 7.匿名函数的多样写法：多用于插件的扩展
 
 ##### 8.jQuery相关
-
-- 扩展jquery的类方法（也就是静态方法）:jQuery.extend({});**不能通过对象去调用，否则报错**
-- 扩展jquery的对象
- - 扩展jquery的对象的方法:jQuery.fn.extend({一组方法}),jQuery.fn.函数名称 =function(){单个}**不能通过静态类去调用，否则报错**
- - jQuery的对象内部扩展一个自定义的对象
-- 3种写法
- - 基本写法（不独立）
- - 独立写法(独立一个单独的文件)
- - 独立写法，增加jQuery命名空间（相当于java中给$对象添加了一个ext的内部静态类）；**使用方式：$.ext.methodName(参数：可以是juqery对象或其他)**
-
+* 扩展jquery的类方法（也就是静态方法）:jQuery.extend({});**不能通过对象去调用，否则报错**
+* 扩展jquery的对象
+   * 扩展jquery的对象的方法:jQuery.fn.extend({一组方法}),jQuery.fn.函数名称 =function(){单个}**不能通过静态类去调用，否则报错**
+   * jQuery的对象内部扩展一个自定义的对象
+* 3种写法
+   * 基本写法（不独立）
+   * 独立写法(独立一个单独的文件)
+   * 独立写法，增加jQuery命名空间（相当于java中给$对象添加了一个ext的内部静态类）；**使用方式：$.ext.methodName(参数：可以是juqery对象或其他)**
+  
 ##### 9.插件开发
 
 1. 重写alert函数
