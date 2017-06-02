@@ -74,6 +74,9 @@
      * Undefined ：类型只有一个值，即 undefined。当声明的变量未初始化时，该变量的默认值是 undefined。
      * Null ：只有一个值的类型是 Null，它只有一个专用值 null，即它的字面量。值 undefined 实际上是从值 null 派生来的，因此 ECMAScript 把它们定义为相等的。`alert(null == undefined);  //输出 "true"`。尽管这两个值相等，但它们的含义不同。undefined 是声明了变量但未对其初始化时赋予该变量的值，null 则用于表示尚未存在的对象（在讨论 typeof 运算符时，简单地介绍过这一点）。如果函数或方法要返回的是对象，那么找不到该对象时，返回的通常是 null。
 
+## 工作中问题总结
+1.关于jquery中插件覆盖问题。当给jquery扩展完对象，如果再次加载jquery对象，那么之前加载扩展对象将不存在。
+  如何避免：保证一个页面一种js文件只引入一次。
 
 
 
